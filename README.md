@@ -15,6 +15,12 @@ On Debian/Ubuntu:
 sudo apt install build-essential nasm qemu-system-x86
 ```
 
+
+
+# Arch users would probably figure it out (we're all lazy bradarz)
+
+
+
 ## Build and run
 
 ```bash
