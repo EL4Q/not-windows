@@ -1,5 +1,3 @@
-# not-windows: minimal OS kernel
-# Build and run in QEMU
 
 CC   = gcc
 ASM  = nasm
