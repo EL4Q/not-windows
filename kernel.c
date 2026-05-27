@@ -1,5 +1,3 @@
-/* Minimal kernel: VGA text mode, print "not windows" */
-
 #include <stdint.h>
 
 #define VGA_BASE  0xB8000
@@ -40,19 +38,16 @@ void kernel_main(uint32_t magic, uint32_t addr) {
     volatile uint16_t *vga = (volatile uint16_t *)VGA_BASE;
     uint8_t color = vga_entry_color(VGA_LIGHT_GRAY, VGA_BLUE);
 
-    /* Clear screen */
     for (int i = 0; i < VGA_WIDTH * VGA_HEIGHT; i++)
         vga[i] = vga_entry(' ', color);
 
-    /* "not windows" at center-ish */
     const char *msg = "not windows";
     int row = 12;
     int col = (VGA_WIDTH - 11) / 2;
     for (int i = 0; msg[i]; i++)
         vga[row * VGA_WIDTH + col + i] = vga_entry(msg[i], color);
 
-    /* Bottom line: hint */
-    const char *hint = "this is an OS. (not windows)";
+    const char *hint = "this is a simple kernel. (not window's)";
     int h = VGA_HEIGHT - 1;
     for (int i = 0; hint[i]; i++)
         vga[h * VGA_WIDTH + i] = vga_entry(hint[i], color);
